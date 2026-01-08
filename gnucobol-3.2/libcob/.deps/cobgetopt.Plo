@@ -1,0 +1,64 @@
+cobgetopt.lo: cobgetopt.c ../config.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/stddef.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/stddef.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_header_macro.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_ptrdiff_t.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_size_t.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_wchar_t.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_null.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_max_align_t.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/__stddef_offsetof.h \
+  /root/code/emsdk/upstream/lib/clang/22/include/stdint.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/ctype.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/unistd.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/posix.h \
+  common.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/setjmp.h \
+  /root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/setjmp.h \
+  exception.def exception-io.def statement.def version.h cobgetopt.h
+../config.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h:
+/root/code/emsdk/upstream/lib/clang/22/include/stddef.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/stddef.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_header_macro.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_ptrdiff_t.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_size_t.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_wchar_t.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_null.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_max_align_t.h:
+/root/code/emsdk/upstream/lib/clang/22/include/__stddef_offsetof.h:
+/root/code/emsdk/upstream/lib/clang/22/include/stdint.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/features.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/string.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/strings.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/ctype.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/unistd.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/posix.h:
+common.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/setjmp.h:
+/root/code/emsdk/upstream/emscripten/cache/sysroot/include/bits/setjmp.h:
+exception.def:
+exception-io.def:
+statement.def:
+version.h:
+cobgetopt.h:
