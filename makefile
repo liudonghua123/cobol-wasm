@@ -27,12 +27,16 @@ WASI_CONF_CPPFLAGS := --sysroot=$(WASI_SYSROOT)
 WASI_CONF_LDFLAGS  := --sysroot=$(WASI_SYSROOT)
 
 # Flags for Actual Compilation - Crucial: SJLJ must be in CFLAGS
-WASI_REAL_CFLAGS   := -O2 -mllvm -wasm-enable-sjlj -fsigned-char
+# Use the native Wasm Exception Handling proposal
+WASI_REAL_CFLAGS   := -O2 -mllvm -wasm-enable-sjlj -fsigned-char -fwasm-exceptions
 WASI_REAL_CPPFLAGS := --sysroot=$(WASI_SYSROOT) -I$(WASI_OUT)/include \
                      -D_WASI_EMULATED_SIGNAL -D_WASI_EMULATED_GETPID \
                      -D_WASI_EMULATED_MMAN -include $(FIX_HEADER)
+# Get the path to the clang builtins library for this specific SDK
+CLANG_RTLIB := $(shell $(WASI_CC) -print-libgcc-file-name)
 WASI_REAL_LDFLAGS  := --sysroot=$(WASI_SYSROOT) -L$(WASI_OUT)/lib -L$(WASI_LIB_DIR) \
-                     -Wl,--allow-undefined
+		     -Wl,--allow-undefined,-mllvm,-wasm-enable-sjlj \
+		     -lsetjmp
 WASI_REAL_LIBS     := $(WASI_LIB_DIR)/libwasi-emulated-signal.a \
                      $(WASI_LIB_DIR)/libwasi-emulated-getpid.a \
                      $(WASI_LIB_DIR)/libwasi-emulated-mman.a
@@ -47,16 +51,13 @@ EMCC_OPTS := -s WASM=1 -s FORCE_FILESYSTEM=1 -s ALLOW_MEMORY_GROWTH=1 \
 
 all: wasi emscripten
 
-check-fix:
-	@if [ ! -f $(FIX_HEADER) ]; then echo "Error: $(FIX_HEADER) missing!"; exit 1; fi
-
 # ==============================================================================
 # TARGET: WASI
 # ==============================================================================
 
 wasi: $(WASI_OUT)/bin/cobc.wasm
 
-$(WASI_OUT)/lib/libgmp.a: check-fix
+$(WASI_OUT)/lib/libgmp.a:
 	mkdir -p $(WASI_OUT)
 	cd $(DEPS_SRC_GMP) && $(WASI_ENV) ./configure --host=wasm32-wasi \
 		--build=x86_64-linux --disable-assembly --prefix=$(WASI_OUT) \
@@ -68,6 +69,8 @@ $(WASI_OUT)/bin/cobc.wasm: $(WASI_OUT)/lib/libgmp.a
 	cd $(DEPS_SRC_COBOL) && $(WASI_ENV) ./configure --host=wasm32-wasi \
 		--build=x86_64-linux --without-db --prefix=$(WASI_OUT) \
 		--with-gmp=$(WASI_OUT) \
+		--disable-shared --enable-static \
+		--with-vfork=no --with-fork=no \
 		CPPFLAGS="$(WASI_CONF_CPPFLAGS) -I$(WASI_OUT)/include" \
 		LDFLAGS="$(WASI_CONF_LDFLAGS) -L$(WASI_OUT)/lib" HELP2MAN=/bin/true
 	find $(DEPS_SRC_COBOL) -name "Makefile" -exec sed -i 's/,-z,relro//g' {} +
