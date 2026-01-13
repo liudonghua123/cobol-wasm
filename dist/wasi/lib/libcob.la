@@ -14,10 +14,10 @@ library_names=''
 old_library='libcob.a'
 
 # Linker flags that cannot go in dependency_libs.
-inherited_linker_flags=''
+inherited_linker_flags=' -pthread'
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/root/code/webassembly/cobol-wasm/dist/wasi/lib /root/code/webassembly/cobol-wasm/dist/wasi/lib/libgmp.la -ldl'
+dependency_libs=' -L/root/code/webassembly/cobol-wasm/dist/wasi/lib /root/code/webassembly/cobol-wasm/dist/wasi/lib/libgmp.la -L/opt/wasi-sdk/share/wasi-sysroot/lib/wasm32-wasip1-threads -lsetjmp -lwasi-emulated-getpid -lwasi-emulated-mman -ldl'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''

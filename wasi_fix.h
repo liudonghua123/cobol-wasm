@@ -16,6 +16,16 @@ static inline int sigaction(int sig, const void *act, void *oact) { return 0; }
 #define system(x) wasi_system_stub(x)
 static inline int wasi_system_stub(const char *command) { return -1; }
 
+// char *getlogin() { return "wasm-user"; }
+
+/* 使用宏将 getlogin 替换为 NULL */
+/* 这样 common.c 中的 if (s = getlogin()) 将变为 if (s = NULL) */
+#define getlogin() (NULL)
+
+/* 如果之后遇到 getpwuid 或 getuid 报错，也可以加在这里 */
+#define getuid() 0
+#define getpwuid(uid) (NULL)
+
 #ifndef F_RDLCK
 #define F_RDLCK 0
 #endif
