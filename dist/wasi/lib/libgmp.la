@@ -17,7 +17,7 @@ old_library='libgmp.a'
 inherited_linker_flags=' -pthread'
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/root/code/webassembly/cobol-wasm/dist/wasi/lib -L/opt/wasi-sdk/share/wasi-sysroot/lib/wasm32-wasip1-threads -lsetjmp -lwasi-emulated-getpid -lwasi-emulated-mman'
+dependency_libs=' -L/root/code/webassembly/cobol-wasm/dist/wasi/lib -L/opt/wasi-sdk/share/wasi-sysroot/lib/wasm32-wasip1-threads -lsetjmp -lwasi-emulated-signal -lwasi-emulated-getpid -lwasi-emulated-mman'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''

@@ -40,11 +40,11 @@ WASI_REAL_CPPFLAGS := --sysroot=$(WASI_SYSROOT) -I$(WASI_OUT)/include \
 CLANG_RTLIB := $(shell $(WASI_CC) -print-libgcc-file-name)
 WASI_REAL_LDFLAGS  := --sysroot=$(WASI_SYSROOT) -L$(WASI_OUT)/lib -L$(WASI_LIB_DIR) \
 		     -Wl,--allow-undefined,-mllvm,-wasm-enable-sjlj \
- 		     -lsetjmp -Wl,--shared-memory -pthread
+ 		     -lsetjmp -Wl,--shared-memory -pthread -Wl,--initial-memory=67108864 -Wl,--max-memory=2147483648
 # WASI_REAL_LIBS     := $(WASI_LIB_DIR)/libwasi-emulated-signal.a \
 #                      $(WASI_LIB_DIR)/libwasi-emulated-getpid.a \
 #                      $(WASI_LIB_DIR)/libwasi-emulated-mman.a
-WASI_REAL_LIBS     := -lwasi-emulated-getpid -lwasi-emulated-mman
+WASI_REAL_LIBS     := -lwasi-emulated-signal -lwasi-emulated-getpid -lwasi-emulated-mman
 
 # --- Emscripten Config ---
 EMCC_OPTS := -s WASM=1 -s FORCE_FILESYSTEM=1 -s ALLOW_MEMORY_GROWTH=1 \
